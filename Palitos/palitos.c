@@ -12,6 +12,7 @@ int main()
     int palitoJogador4 = 3;
     int rodada = 0;
 
+	// Palitos que o jogador leva a mesa.
     int palitosMao1;
     int palitosMao2;
     int palitosMao3;
@@ -24,13 +25,14 @@ int main()
 
     int somaMao;
 
+	// O numero escolhido pelo jogador.
     int escolhaJogador1;
     int escolhaJogador2;
     int escolhaJogador3;
     int escolhaJogador4;
 
 
-
+	// semente para rand() onde pega os segundos o tempo do relógio do computador.
     srand( (unsigned)time(NULL) );
  
     // Loop para o jogo rodar.
@@ -38,7 +40,7 @@ int main()
 
             printf("************************************************************ \n\n");
 
- 			printf("Rodada : %d \n\n", rodada);
+ 	    printf("Rodada : %d \n\n", rodada);
             printf("Qunatidade de Palitos\n");
             printf("Jogador1: %d \n ",palitoJogador1);
             printf("Jogador2: %d \n ",palitoJogador2);
@@ -46,7 +48,7 @@ int main()
             printf("Jogador4: %d \n \n",palitoJogador4);
 
  			if(rodada == 0) {
-	 			palitosMao1 = rand() % palitoJogador1 + 1;
+	 		    palitosMao1 = rand() % palitoJogador1 + 1; // faz rand() ficar entre 0 e 3.
 	 		    sleep(1);
 
 	 		    palitosMao2 = rand() % palitoJogador2 + 1;
@@ -62,18 +64,18 @@ int main()
  			}else {
 
      			//Escolha dos palitos que vão para mesa.
-     		    palitosMao1 = 1 + rand() % palitoJogador1;
-     		    sleep(1);
-
-     		    palitosMao2 = 1 + rand() % palitoJogador2;
-     		    sleep(1);
-
-     		    palitosMao3 = 1 + rand() % palitoJogador3;
-     		    sleep(1);
-
-     		    palitosMao4 = 1 + rand() % palitoJogador4;
-     		    sleep(1);
-            }
+	     		    palitosMao1 = 1 + rand() % palitoJogador1; // faz rand() ficar entre 1 e 3.
+	     		    sleep(1);
+	
+	     		    palitosMao2 = 1 + rand() % palitoJogador2;
+	     		    sleep(1);
+	
+	     		    palitosMao3 = 1 + rand() % palitoJogador3;
+	     		    sleep(1);
+	
+	     		    palitosMao4 = 1 + rand() % palitoJogador4;
+	     		    sleep(1);
+        		}
  		    
  		    printf("Escolha dos numeros pelos Jogadores \n");
 
@@ -106,25 +108,25 @@ int main()
 
  		    	palitoJogador1 = palitoJogador1 - 1;
  		    	printf("Jogador1  Acertou \n \n");
-                printf("Numero de Palitos %d \n \n", palitoJogador1);
+                	printf("Numero de Palitos %d \n \n", palitoJogador1);
 
  		    }else if(escolhaJogador2 == somaMao){
 
  		    	palitoJogador2 = palitoJogador2 - 1;
  		    	printf("Jogador2  Acertou \n \n");
-                printf("Numero de Palitos %d \n \n", palitoJogador2);
+                	printf("Numero de Palitos %d \n \n", palitoJogador2);
 
  		    }else if(escolhaJogador3 == somaMao){
 
  		    	palitoJogador3 = palitoJogador3 - 1;
  		    	printf("Jogador3  Acertou \n \n");
-                printf("Numero de Palitos %d \n \n", palitoJogador3);
+        		 printf("Numero de Palitos %d \n \n", palitoJogador3);
 
  		    }else if(escolhaJogador4 == somaMao){
 
  		    	palitoJogador4 = palitoJogador4 - 1;
  		    	printf("Jogador4  Acertou \n \n");
-                printf("Numero de Palitos %d \n \n", palitoJogador4);
+                	printf("Numero de Palitos %d \n \n", palitoJogador4);
 
  		    }else {
 
