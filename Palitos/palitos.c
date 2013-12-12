@@ -2,10 +2,6 @@
 #include <stdlib.h>
 #include <time.h>
 
-
-
-
-
 int main()
 {
 
@@ -28,6 +24,8 @@ int main()
     int palitosMao4;
 
     int somaMao;
+
+    char pause;
 
 
     int escolhaJogadorReal;
@@ -56,6 +54,8 @@ int main()
     printf("Escolha: ");
     scanf("%i",&singlePlayer);
 
+    printf("\33[H\33[2J"); // Para limpar o terminal
+
     switch (singlePlayer) {
         case ( 2 ): 
             // Loop para o jogo rodar.
@@ -71,19 +71,19 @@ int main()
                 printf("Jogador4: %d \n \n",palitoJogador4);
 
                 if(rodada == 0) {
-                    printf("De 0 a 3 \n");
+                    printf("De 0 a %d \n", palitoJogadorReal);
                     printf("Palitos que vão em sua mão para mesa: ");
                     scanf("%i",&palitosMaoJogadorReal);
 
                     while ( palitosMaoJogadorReal > palitoJogadorReal) {
                         printf("Você não tem tudo isto de palitos \n");
-                        printf("Palitos que vão em sua mão para mesa: ");
+                        printf("Palitos que vão em sua mão para mesa: \n");
                         scanf("%i",&palitosMaoJogadorReal);
 
                     }
 
                     while( palitosMaoJogadorReal < 0) {
-                            printf("Você não pode usar palitos negativos");
+                            printf("Você não pode usar palitos negativos\n");
                             printf("Palitos que vão em sua mão para mesa: \n");
                             scanf("%i",&palitosMaoJogadorReal);
                         }
@@ -99,7 +99,7 @@ int main()
 
                 }else {
 
-                    //Escolha dos palitos que vão para mesa.
+                    printf("De 1 a %d \n",palitoJogadorReal);
                     printf("Palitos que vão em sua mão para mesa: ");
                     scanf("%i",&palitosMaoJogadorReal);
 
@@ -136,6 +136,18 @@ int main()
                 scanf("%i",&escolhaJogadorReal);
                 printf("Você: %i\n", escolhaJogadorReal);
 
+                while ( escolhaJogadorReal > totalPalitos) {
+                        printf("A mesa não possui tantos palitos \n");
+                        scanf("%i",&escolhaJogadorReal);
+                        printf("Você: %i\n", escolhaJogadorReal);
+
+                    }
+
+                    while( escolhaJogadorReal < 0) {
+                            printf("Você não pode usar palitos negativos");
+                            scanf("%i",&escolhaJogadorReal);
+                            printf("Você: %i\n", escolhaJogadorReal);
+                        }
 
                 //Escolha do Jogador2
                 escolhaJogador2 = 1 + rand() % totalPalitos;
@@ -145,12 +157,10 @@ int main()
                     escolhaJogador2 = 1 + rand() % totalPalitos;
                 }
                 sleep(1);
-
-                //Escolha do Jogador3
                 printf("Jogador2 : %d\n", escolhaJogador2);
 
 
-                // Escolha dos Numeros pelo Jogador3
+                //Escolha do Jogador3
                 escolhaJogador3 = 1 + rand() % totalPalitos;
 
                 while ( (escolhaJogador3 == escolhaJogador2) || (escolhaJogador3 == escolhaJogadorReal ) ) {
@@ -158,40 +168,18 @@ int main()
                     escolhaJogador3 = 1 + rand() % totalPalitos;
 
                 }
-
+                printf("Jogador3: %d \n", escolhaJogador3);
                 sleep(1);
-
-	// semente para rand() onde pega os segundos o tempo do relógio do computador.
-    srand( (unsigned)time(NULL) );
- 
-    // Loop para o jogo rodar.
- 	while( (palitoJogador1 != 0) || (palitoJogador2 != 0) || (palitoJogador3 != 0) || (palitoJogador4 != 0) ) {
-
-
-                printf("Jogador3 : %d\n", escolhaJogador3);
-
-
 
                 // Escolha dos Numeros pelo Jogador4
                 escolhaJogador4 = 1 + rand() % totalPalitos;
 
- 	    printf("Rodada : %d \n\n", rodada);
-            printf("Qunatidade de Palitos\n");
-            printf("Jogador1: %d \n ",palitoJogador1);
-            printf("Jogador2: %d \n ",palitoJogador2);
-            printf("Jogador3: %d \n ",palitoJogador3);
-            printf("Jogador4: %d \n \n",palitoJogador4);
-
- 			if(rodada == 0) {
-	 		    palitosMao1 = rand() % palitoJogador1 + 1; // faz rand() ficar entre 0 e 3.
-	 		    sleep(1);
-
-
-                while (( escolhaJogador4 == escolhaJogador3) || (escolhaJogador4 == escolhaJogador2) || (escolhaJogador4 == escolhaJogadorReal)) {
+                while ( (escolhaJogador4 == escolhaJogador3) || (escolhaJogador4 == escolhaJogador2 ) || (escolhaJogador4 == escolhaJogadorReal) ) {
 
                     escolhaJogador4 = 1 + rand() % totalPalitos;
 
                 }
+
                 printf("Jogador4 : %d \n \n", escolhaJogador4);
 
 
@@ -237,26 +225,15 @@ int main()
 
                     
                 rodada = rodada + 1;
+                
+                printf("Digite 1 para continuar: ");
+                scanf("%d",&pause);
+                printf("\33[H\33[2J"); // Para limpar o terminal
             }
-
-     			//Escolha dos palitos que vão para mesa.
-	     		    palitosMao1 = 1 + rand() % palitoJogador1; // faz rand() ficar entre 1 e 3.
-	     		    sleep(1);
-	
-	     		    palitosMao2 = 1 + rand() % palitoJogador2;
-	     		    sleep(1);
-	
-	     		    palitosMao3 = 1 + rand() % palitoJogador3;
-	     		    sleep(1);
-	
-	     		    palitosMao4 = 1 + rand() % palitoJogador4;
-	     		    sleep(1);
-        		}
+        
  		    
- 		    printf("Escolha dos numeros pelos Jogadores \n");
 
-
-        break;
+     break;   
 
         case ( 4 ): 
             // Loop para o jogo rodar.
@@ -319,47 +296,21 @@ int main()
                     escolhaJogador2 = 1 + rand() % totalPalitos;
                 }
                 sleep(1);
-
-                //Escolha do Jogador3
                 printf("Jogador2 : %d\n", escolhaJogador2);
-
-
- 		    	palitoJogador1 = palitoJogador1 - 1;
- 		    	printf("Jogador1  Acertou \n \n");
-                	printf("Numero de Palitos %d \n \n", palitoJogador1);
 
 
                 // Escolha dos Numeros pelo Jogador3
                 escolhaJogador3 = 1 + rand() % totalPalitos;
 
-
                 while ( (escolhaJogador3 == escolhaJogador2) || (escolhaJogador3 == escolhaJogador1 ) ) {
 
- 		    	palitoJogador2 = palitoJogador2 - 1;
- 		    	printf("Jogador2  Acertou \n \n");
-                	printf("Numero de Palitos %d \n \n", palitoJogador2);
-
-
-                    escolhaJogador3 = 1 + rand() % totalPalitos;
+                escolhaJogador3 = 1 + rand() % totalPalitos;
 
 
                 }
 
- 		    	palitoJogador3 = palitoJogador3 - 1;
- 		    	printf("Jogador3  Acertou \n \n");
-        		 printf("Numero de Palitos %d \n \n", palitoJogador3);
-
-
                 sleep(1);
-
-
                 printf("Jogador3 : %d\n", escolhaJogador3);
-
- 		    	palitoJogador4 = palitoJogador4 - 1;
- 		    	printf("Jogador4  Acertou \n \n");
-                	printf("Numero de Palitos %d \n \n", palitoJogador4);
-
-
 
                 // Escolha dos Numeros pelo Jogador4
                 escolhaJogador4 = 1 + rand() % totalPalitos;
@@ -369,8 +320,7 @@ int main()
                     escolhaJogador4 = 1 + rand() % totalPalitos;
 
                 }
-
-                printf("Jogador4 : %d \n \n", escolhaJogador4);
+                printf("Jogador4 : %d\n\n", escolhaJogador4);
 
                 printf("Quantos Palitos na Mão \n");
                 printf("Jogador1 : %d \n",palitosMao1);
@@ -412,6 +362,10 @@ int main()
 
                     
                 rodada = rodada + 1;
+
+                printf("Digite 1 para continuar: ");
+                scanf("%d",&pause);
+                printf("\33[H\33[2J"); // Para limpar o terminal
 
             }
         break;
